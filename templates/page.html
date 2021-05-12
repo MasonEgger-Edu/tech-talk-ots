@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+<title>Secret Created</title>
+{% endblock%}
+
+
+{% block page_content %}
+
+<p>
+<div class="header-bar">
+    <h2>Success</h2>
+</div>
+
+</p>
+
+<div class="card-body">
+
+
+The id is : {{data.id}}
+
+<br>
+<br>
+<br>
+<h4>Share this link:</h4>
+<div class="data-bar">
+   <div id="a" onclick="copyDivToClipboard()">http://localhost:8000/secrets/{{data.id}}</div>
+</div>
+<em><i>Click on above text to copy to ciipboard</i></em>
+
+<br>
+<br>
+<a href="/">Go Back</a>
+
+</div>
+
+<!--
+
+    <p>
+        <br>
+        Debugging output
+        
+        <br>
+        <br>
+        What are the request fields?    
+        Reference:   https://www.starlette.io/requests/
+        
+        <br>
+        <br>
+        request.method , request.url.path (defaults to POST , /getsecret)
+        <br>
+        {{request.method}} , {{request.url.path}}
+        <br>
+        
+        request.client.host , request.url.port, request.url.scheme (defaults to 127.0.0.1 , 8000 ,   http)
+        <br>
+        {{request.client.host}} , {{request.url.port}} , {{request.url.scheme}}
+        <br>
+        
+        request.headers['content-type'] (defaults to application/x-www-form-urlencoded)
+        <br>
+        {{request.headers['content-type']}}
+        
+    </p>
+-->
+    
+
+<script>
+
+function CopyToClipboard(containerid) {
+  if (document.selection) {
+    var range = document.body.createTextRange();
+    range.moveToElementText(document.getElementById(containerid));
+    range.select().createTextRange();
+    document.execCommand("copy");
+  } else if (window.getSelection) {
+    var range = document.createRange();
+    range.selectNode(document.getElementById(containerid));
+    window.getSelection().addRange(range);
+    document.execCommand("copy");
+    alert("Text has been copied, now paste in the text-area")
+  }
+}
+
+    function copyDivToClipboard() {
+        var range = document.createRange();
+        range.selectNode(document.getElementById("a"));
+        window.getSelection().removeAllRanges(); // clear current selection
+        window.getSelection().addRange(range); // to select text
+        document.execCommand("copy");
+        window.getSelection().removeAllRanges();// to deselect
+    }
+
+
+</script>
+    
+{% endblock %}

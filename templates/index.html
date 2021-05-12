@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+
+{% block head_content %}
+<title>FastAPI One Time Secret</title>
+{% endblock%}
+
+{% block page_content %}
+<div class="header-bar">
+<h2>Create a Secret</h2>
+</div>
+    
+
+<div class="card-body">
+
+
+<form action="/secretsform" method="post">
+
+    <label for="message">Secret Message: </label>
+    <textarea rows="7" name="message" autocomplete="off" placeholder="Secret content goes here..." required></textarea>
+
+
+    <br>
+    <br>
+    <h4>Privacy Options</h4>
+
+    <label for="passphrase">Passphrase : </label>
+    <input type="text" name="passphrase" id="passphraseField" value="" placeholder="A word or phrase that&#39;s difficult to guess" autocomplete="off" required />
+    <br>
+    <br>
+    <div style="display: flex">
+        <label for="expire_seconds">Expiration Time: </label>
+        <select class="select" name="expire_seconds">
+            <option value="604800" >7 days</option>
+            <option value="259200" >3 days</option>
+            <option value="86400" >1 day</option>
+            <option value="43200" >12 hours</option>
+            <option value="14400" >4 hours</option>
+            <option value="3600">1 hour</option>
+            <option value="1800" selected>30 minutes</option>
+            <option value="600">10 minutes</option>
+            <option value="300" >5 minutes</option>
+            <option value="30">30 seconds</option>
+        </select>
+    </div>
+        
+    <br>
+    <br>
+
+    <button class="button" type="submit">Create a Secret Link</button>
+</form>
+
+<em><i>*A secret link only works once and then disappears forever.</i></em>
+</div>
+
+
+<!--
+
+    <br>
+    
+    <form action="/getsecret" method="post">
+        <h2>Secret Retrieval</h2>
+        
+        <label for="id">Secret ID: </label>
+        <input name="id" value="">            
+        
+        
+        <br>
+        
+        
+        <label for="passphrase">Passphrase : </label>
+        <input name="passphrase" value="">        
+        <br>
+        
+        
+        <button type="submit">Retrieve Secret</button>
+    </form>
+-->
+
+{% endblock %}

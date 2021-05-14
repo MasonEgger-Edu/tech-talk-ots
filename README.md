@@ -147,4 +147,4 @@ https://github.com/tiangolo/fastapi/issues/2387
 
 #### Add copy functionality
 https://stackoverflow.com/questions/36639681/how-to-copy-text-from-a-div-to-clipboard
-
+https://stackoverflow.com/questions/18353410/want-to-show-alert-box-for-only-3-seconds

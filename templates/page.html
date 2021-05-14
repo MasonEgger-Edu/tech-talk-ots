@@ -88,10 +88,20 @@ function CopyToClipboard(containerid) {
         window.getSelection().removeAllRanges(); // clear current selection
         window.getSelection().addRange(range); // to select text
         document.execCommand("copy");
+        tempAlert("text copied to clipboard", 1000) 
         window.getSelection().removeAllRanges();// to deselect
     }
 
 
+    function tempAlert(msg,duration) {
+        var el = document.createElement("div");
+        el.setAttribute("style","position:absolute;top:40%;left:20%;background-color:white;");
+        el.innerHTML = msg;
+        setTimeout(function(){
+            el.parentNode.removeChild(el);
+        },duration);
+        document.body.appendChild(el);
+    }
 </script>
     
 {% endblock %}
